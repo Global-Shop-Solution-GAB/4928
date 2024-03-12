@@ -1,0 +1,1422 @@
+Program.Sub.ScreenSU.Start
+Gui.fPartMaint..Create
+Gui.fPartMaint..Caption("Parent Part Maintenance")
+Gui.fPartMaint..Size(20430,9960)
+Gui.fPartMaint..MinX(0)
+Gui.fPartMaint..MinY(0)
+Gui.fPartMaint..Position(0,0)
+Gui.fPartMaint..BackColor(-2147483633)
+Gui.fPartMaint..MousePointer(0)
+Gui.fPartMaint..Event(UnLoad,fPartMaint_UnLoad)
+Gui.fPartMaint..MaxButton(False)
+Gui.fPartMaint..Sizeable(False)
+Gui.fPartMaint.framePart.Create(Frame)
+Gui.fPartMaint.framePart.Size(9735,4680)
+Gui.fPartMaint.framePart.Position(3945,15)
+Gui.fPartMaint.framePart.Caption("Part ")
+Gui.fPartMaint.lbl1.Create(Label,"Serial No.",True,885,255,0,60,330,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl1.Parent("framePart")
+Gui.fPartMaint.txtSlNo.Create(TextBox,"",True,390,300,0,975,240,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtSlNo.NumericOnly(2)
+Gui.fPartMaint.txtSlNo.Parent("framePart")
+Gui.fPartMaint.txtSlNo.Mask("###")
+Gui.fPartMaint.txtSlNo.DefaultValue(" ")
+Gui.fPartMaint.txtSlNo.ControlGroup(1)
+Gui.fPartMaint.txtSlNo.MaxLength(3)
+Gui.fPartMaint.lbl2.Create(Label,"Part Type",True,840,255,0,1485,330,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl2.Parent("framePart")
+Gui.fPartMaint.lbl3.Create(Label,"Charge Code",True,1080,255,0,1485,750,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl3.Parent("framePart")
+Gui.fPartMaint.ddlChgCode.Create(DropDownList)
+Gui.fPartMaint.ddlChgCode.Size(1140,330)
+Gui.fPartMaint.ddlChgCode.Position(2580,645)
+Gui.fPartMaint.ddlChgCode.Parent("framePart")
+Gui.fPartMaint.ddlChgCode.DefaultValue(" ")
+Gui.fPartMaint.ddlChgCode.ControlGroup(1)
+Gui.fPartMaint.ddlChgCode.Sorted(True)
+Gui.fPartMaint.cmdSavePrt.Create(Button)
+Gui.fPartMaint.cmdSavePrt.Size(810,345)
+Gui.fPartMaint.cmdSavePrt.Position(8460,210)
+Gui.fPartMaint.cmdSavePrt.Parent("framePart")
+Gui.fPartMaint.cmdSavePrt.Caption("Save")
+Gui.fPartMaint.cmdSavePrt.Event(Click,cmdSavePrt_Click)
+Gui.fPartMaint.GsGCPart.Create(GsGridControl)
+Gui.fPartMaint.GsGCPart.Size(9585,3495)
+Gui.fPartMaint.GsGCPart.Position(90,1080)
+Gui.fPartMaint.GsGCPart.Parent("framePart")
+Gui.fPartMaint.GsGCPart.Event(RowCellClick,GsGCPart_RowCellClick)
+Gui.fPartMaint.GsGCPart.Event(CellValueChanged,GsGCPart_CellValueChanged)
+Gui.fPartMaint.chkAllTi.Create(CheckBox)
+Gui.fPartMaint.chkAllTi.Size(1335,240)
+Gui.fPartMaint.chkAllTi.Position(90,540)
+Gui.fPartMaint.chkAllTi.Parent("framePart")
+Gui.fPartMaint.chkAllTi.Caption("All Titanium")
+Gui.fPartMaint.ddlPartType.Create(DropDownList)
+Gui.fPartMaint.ddlPartType.Size(1695,330)
+Gui.fPartMaint.ddlPartType.Position(2595,225)
+Gui.fPartMaint.ddlPartType.Parent("framePart")
+Gui.fPartMaint.ddlPartType.Event(Click,ddlPartType_Click)
+Gui.fPartMaint.ddlPartType.DefaultValue(" ")
+Gui.fPartMaint.ddlPartType.ControlGroup(1)
+Gui.fPartMaint.ddlPartType.Sorted(True)
+Gui.fPartMaint.lbl12.Create(Label,"Side",True,495,255,0,4320,315,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl12.Parent("framePart")
+Gui.fPartMaint.ddlPSide.Create(DropDownList)
+Gui.fPartMaint.ddlPSide.Enabled(False)
+Gui.fPartMaint.ddlPSide.Size(1095,330)
+Gui.fPartMaint.ddlPSide.Position(4905,225)
+Gui.fPartMaint.ddlPSide.Parent("framePart")
+Gui.fPartMaint.ddlPSide.DefaultValue(" ")
+Gui.fPartMaint.ddlPSide.ControlGroup(1)
+Gui.fPartMaint.lbl13.Create(Label,"Description",True,990,255,0,3795,750,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl13.Parent("framePart")
+Gui.fPartMaint.txtDescription.Create(TextBox,"",True,4335,300,0,4905,660,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtDescription.Parent("framePart")
+Gui.fPartMaint.txtDescription.DefaultValue(" ")
+Gui.fPartMaint.txtDescription.ControlGroup(1)
+Gui.fPartMaint.ddlPL.Create(DropDownList)
+Gui.fPartMaint.ddlPL.Size(975,330)
+Gui.fPartMaint.ddlPL.Position(7410,225)
+Gui.fPartMaint.ddlPL.Parent("framePart")
+Gui.fPartMaint.ddlPL.DefaultValue(" ")
+Gui.fPartMaint.ddlPL.ControlGroup(1)
+Gui.fPartMaint.ddlPL.Sorted(True)
+Gui.fPartMaint.lbl7.Create(Label,"Product Line",True,1185,255,0,6150,330,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl7.Parent("framePart")
+Gui.fPartMaint.chkBlank.Create(CheckBox)
+Gui.fPartMaint.chkBlank.Size(840,240)
+Gui.fPartMaint.chkBlank.Position(90,795)
+Gui.fPartMaint.chkBlank.Parent("framePart")
+Gui.fPartMaint.chkBlank.Caption("Blank")
+Gui.fPartMaint.frameChgCode.Create(Frame)
+Gui.fPartMaint.frameChgCode.Size(5130,4890)
+Gui.fPartMaint.frameChgCode.Position(3975,4725)
+Gui.fPartMaint.frameChgCode.Caption("Charge Code")
+Gui.fPartMaint.lbl4.Create(Label,"Charge Code",True,1200,255,0,30,330,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl4.Parent("frameChgCode")
+Gui.fPartMaint.txtChgCode.Create(TextBox,"",True,1005,300,0,1080,240,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtChgCode.Parent("frameChgCode")
+Gui.fPartMaint.txtChgCode.DefaultValue(" ")
+Gui.fPartMaint.txtChgCode.ControlGroup(2)
+Gui.fPartMaint.txtChgCode.MaxLength(6)
+Gui.fPartMaint.txtChgAmt.Create(TextBox,"",True,1095,300,0,3120,240,True,1,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtChgAmt.Parent("frameChgCode")
+Gui.fPartMaint.txtChgAmt.NumericOnly(1)
+Gui.fPartMaint.txtChgAmt.Mask("#######0.00")
+Gui.fPartMaint.txtChgAmt.DefaultValue("0")
+Gui.fPartMaint.txtChgAmt.ControlGroup(2)
+Gui.fPartMaint.txtChgAmt.MaxLength(11)
+Gui.fPartMaint.lbl5.Create(Label,"Charge Amt.",True,1050,255,0,2130,330,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl5.Parent("frameChgCode")
+Gui.fPartMaint.cmdSaveChrgCode.Create(Button)
+Gui.fPartMaint.cmdSaveChrgCode.Size(780,345)
+Gui.fPartMaint.cmdSaveChrgCode.Position(4290,210)
+Gui.fPartMaint.cmdSaveChrgCode.Parent("frameChgCode")
+Gui.fPartMaint.cmdSaveChrgCode.Caption("Save")
+Gui.fPartMaint.cmdSaveChrgCode.Event(Click,cmdSaveChrgCode_Click)
+Gui.fPartMaint.GsGCChgCode.Create(GsGridControl)
+Gui.fPartMaint.GsGCChgCode.Size(4965,4185)
+Gui.fPartMaint.GsGCChgCode.Position(90,630)
+Gui.fPartMaint.GsGCChgCode.Parent("frameChgCode")
+Gui.fPartMaint.GsGCChgCode.Event(RowCellClick,GsGCChgCode_RowCellClick)
+Gui.fPartMaint.GsGCChgCode.Event(CellValueChanged,GsGCChgCode_CellValueChanged)
+Gui.fPartMaint.framePartCompAssoc.Create(Frame)
+Gui.fPartMaint.framePartCompAssoc.Size(6570,4680)
+Gui.fPartMaint.framePartCompAssoc.Position(13740,15)
+Gui.fPartMaint.framePartCompAssoc.Caption("Part Component Association")
+Gui.fPartMaint.framePartCompAssoc.Enabled(False)
+Gui.fPartMaint.lbl8.Create(Label,"Serial No.",True,885,255,0,90,360,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl8.Parent("framePartCompAssoc")
+Gui.fPartMaint.lbl6.Create(Label,"Component ID",True,1110,255,0,1680,360,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl6.Parent("framePartCompAssoc")
+Gui.fPartMaint.ddlCompID.Create(DropDownList)
+Gui.fPartMaint.ddlCompID.Size(750,330)
+Gui.fPartMaint.ddlCompID.Position(2865,255)
+Gui.fPartMaint.ddlCompID.Parent("framePartCompAssoc")
+Gui.fPartMaint.ddlCompID.DefaultValue(" ")
+Gui.fPartMaint.ddlCompID.Sorted(True)
+Gui.fPartMaint.cmdPartComp.Create(Button)
+Gui.fPartMaint.cmdPartComp.Size(1275,360)
+Gui.fPartMaint.cmdPartComp.Position(5190,240)
+Gui.fPartMaint.cmdPartComp.Parent("framePartCompAssoc")
+Gui.fPartMaint.cmdPartComp.Caption("Save")
+Gui.fPartMaint.cmdPartComp.Event(Click,cmdPartComp_Click)
+Gui.fPartMaint.GsGCPrtComp.Create(GsGridControl)
+Gui.fPartMaint.GsGCPrtComp.Size(6390,3885)
+Gui.fPartMaint.GsGCPrtComp.Position(90,690)
+Gui.fPartMaint.GsGCPrtComp.Parent("framePartCompAssoc")
+Gui.fPartMaint.GsGCPrtComp.Event(RowCellClick,GsGCPrtComp_RowCellClick)
+Gui.fPartMaint.txtSeqNo.Create(TextBox,"",True,450,300,0,4605,285,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtSeqNo.Parent("framePartCompAssoc")
+Gui.fPartMaint.txtSeqNo.NumericOnly(2)
+Gui.fPartMaint.txtSeqNo.Mask("###")
+Gui.fPartMaint.txtSeqNo.Locked(True)
+Gui.fPartMaint.txtSeqNo.ControlGroup(3)
+Gui.fPartMaint.lbl16.Create(Label,"Seq No.",True,885,255,0,3705,360,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl16.Parent("framePartCompAssoc")
+Gui.fPartMaint.txtPrtSlNo.Create(TextBox,"",True,510,300,0,915,270,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtPrtSlNo.Parent("framePartCompAssoc")
+Gui.fPartMaint.txtPrtSlNo.NumericOnly(2)
+Gui.fPartMaint.txtPrtSlNo.Locked(True)
+Gui.fPartMaint.txtPrtSlNo.Mask("###")
+Gui.fPartMaint.framePartComp.Create(Frame)
+Gui.fPartMaint.framePartComp.Size(11130,4890)
+Gui.fPartMaint.framePartComp.Position(9180,4725)
+Gui.fPartMaint.framePartComp.Caption("Component")
+Gui.fPartMaint.lbl10.Create(Label,"Component Type",True,1395,255,0,1470,360,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl10.Parent("framePartComp")
+Gui.fPartMaint.cmdSaveComp.Create(Button)
+Gui.fPartMaint.cmdSaveComp.Size(1860,345)
+Gui.fPartMaint.cmdSaveComp.Position(8370,1035)
+Gui.fPartMaint.cmdSaveComp.Parent("framePartComp")
+Gui.fPartMaint.cmdSaveComp.Caption("Save")
+Gui.fPartMaint.cmdSaveComp.Event(Click,cmdSaveComp_Click)
+Gui.fPartMaint.lbl11.Create(Label,"ID",True,375,255,0,135,360,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl11.Parent("framePartComp")
+Gui.fPartMaint.txtCompID.Create(TextBox,"",True,555,300,0,615,270,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtCompID.Parent("framePartComp")
+Gui.fPartMaint.txtCompID.Mask(">")
+Gui.fPartMaint.txtCompID.MaxLength(2)
+Gui.fPartMaint.txtCompID.DefaultValue(" ")
+Gui.fPartMaint.txtCompID.ControlGroup(3)
+Gui.fPartMaint.GsGCComp.Create(GsGridControl)
+Gui.fPartMaint.GsGCComp.Size(10980,3375)
+Gui.fPartMaint.GsGCComp.Position(90,1425)
+Gui.fPartMaint.GsGCComp.Parent("framePartComp")
+Gui.fPartMaint.GsGCComp.Event(RowCellClick,GsGCComp_RowCellClick)
+Gui.fPartMaint.GsGCComp.Event(CellValueChanged,GsGCComp_CellValueChanged)
+Gui.fPartMaint.ddlCompType.Create(DropDownList)
+Gui.fPartMaint.ddlCompType.Size(1605,330)
+Gui.fPartMaint.ddlCompType.Position(2940,255)
+Gui.fPartMaint.ddlCompType.Parent("framePartComp")
+Gui.fPartMaint.ddlCompType.Event(Click,ddlCompType_Click)
+Gui.fPartMaint.ddlCompType.DefaultValue(" ")
+Gui.fPartMaint.ddlCompType.ControlGroup(3)
+Gui.fPartMaint.ddlCompType.Sorted(True)
+Gui.fPartMaint.lbl14.Create(Label,"Side",True,600,255,0,4845,360,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl14.Parent("framePartComp")
+Gui.fPartMaint.ddlCSide.Create(DropDownList)
+Gui.fPartMaint.ddlCSide.Size(1035,330)
+Gui.fPartMaint.ddlCSide.Position(5490,255)
+Gui.fPartMaint.ddlCSide.Parent("framePartComp")
+Gui.fPartMaint.ddlCSide.Enabled(False)
+Gui.fPartMaint.ddlCSide.DefaultValue(" ")
+Gui.fPartMaint.ddlCSide.ControlGroup(3)
+Gui.fPartMaint.lbl17.Create(Label,"Description",True,1095,255,0,6885,360,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl17.Parent("framePartComp")
+Gui.fPartMaint.txtDescComp.Create(TextBox,"",True,2505,300,0,7935,285,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtDescComp.Parent("framePartComp")
+Gui.fPartMaint.txtDescComp.MaxLength(100)
+Gui.fPartMaint.txtDescComp.DefaultValue(" ")
+Gui.fPartMaint.txtDescComp.ControlGroup(3)
+Gui.fPartMaint.lbl18.Create(Label,"Temp All Ti Router",True,1515,255,0,4140,765,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl18.Parent("framePartComp")
+Gui.fPartMaint.txtRouter.Create(TextBox,"",True,2070,300,0,1245,675,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtRouter.Parent("framePartComp")
+Gui.fPartMaint.txtRouter.MaxLength(100)
+Gui.fPartMaint.txtRouter.DefaultValue(" ")
+Gui.fPartMaint.txtRouter.ControlGroup(3)
+Gui.fPartMaint.cmdRoutBrow.Create(Button)
+Gui.fPartMaint.cmdRoutBrow.Size(375,375)
+Gui.fPartMaint.cmdRoutBrow.Position(3390,630)
+Gui.fPartMaint.cmdRoutBrow.Parent("framePartComp")
+Gui.fPartMaint.cmdRoutBrow.Caption("^")
+Gui.fPartMaint.cmdRoutBrow.Event(Click,cmdRoutBrow_Click)
+Gui.fPartMaint.lbl19.Create(Label,"Temp Router",True,1065,255,0,165,765,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl19.Parent("framePartComp")
+Gui.fPartMaint.txtAllTiRouter.Create(TextBox,"",True,2070,300,0,5685,675,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtAllTiRouter.Parent("framePartComp")
+Gui.fPartMaint.txtAllTiRouter.MaxLength(100)
+Gui.fPartMaint.txtAllTiRouter.DefaultValue(" ")
+Gui.fPartMaint.txtAllTiRouter.ControlGroup(3)
+Gui.fPartMaint.cmdAlTiRoutBrow.Create(Button)
+Gui.fPartMaint.cmdAlTiRoutBrow.Size(375,375)
+Gui.fPartMaint.cmdAlTiRoutBrow.Position(7815,630)
+Gui.fPartMaint.cmdAlTiRoutBrow.Parent("framePartComp")
+Gui.fPartMaint.cmdAlTiRoutBrow.Caption("^")
+Gui.fPartMaint.cmdAlTiRoutBrow.Event(Click,cmdAlTiRoutBrow_Click)
+Gui.fPartMaint.lbl20.Create(Label,"Blank Router",True,1020,255,0,165,1140,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl20.Parent("framePartComp")
+Gui.fPartMaint.txtBlankRouter.Create(TextBox,"",True,2070,300,0,1245,1065,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtBlankRouter.Parent("framePartComp")
+Gui.fPartMaint.txtBlankRouter.MaxLength(100)
+Gui.fPartMaint.txtBlankRouter.DefaultValue(" ")
+Gui.fPartMaint.txtBlankRouter.ControlGroup(3)
+Gui.fPartMaint.cmdBlankRouterBrowser.Create(Button)
+Gui.fPartMaint.cmdBlankRouterBrowser.Size(375,375)
+Gui.fPartMaint.cmdBlankRouterBrowser.Position(3390,1020)
+Gui.fPartMaint.cmdBlankRouterBrowser.Parent("framePartComp")
+Gui.fPartMaint.cmdBlankRouterBrowser.Caption("^")
+Gui.fPartMaint.cmdBlankRouterBrowser.Event(Click,cmdBlankRouterBrowser_Click)
+Gui.fPartMaint.lbl21.Create(Label,"All Ti Blank Router",True,1440,255,0,4110,1140,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl21.Parent("framePartComp")
+Gui.fPartMaint.txtAllTiBlankRouter.Create(TextBox,"",True,2070,300,0,5685,1065,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtAllTiBlankRouter.Parent("framePartComp")
+Gui.fPartMaint.txtAllTiBlankRouter.MaxLength(100)
+Gui.fPartMaint.txtAllTiBlankRouter.DefaultValue(" ")
+Gui.fPartMaint.txtAllTiBlankRouter.ControlGroup(3)
+Gui.fPartMaint.cmdAllTiBlankRouterBrowser.Create(Button)
+Gui.fPartMaint.cmdAllTiBlankRouterBrowser.Size(375,375)
+Gui.fPartMaint.cmdAllTiBlankRouterBrowser.Position(7815,1020)
+Gui.fPartMaint.cmdAllTiBlankRouterBrowser.Parent("framePartComp")
+Gui.fPartMaint.cmdAllTiBlankRouterBrowser.Caption("^")
+Gui.fPartMaint.cmdAllTiBlankRouterBrowser.Event(Click,cmdAllTiBlankRouterBrowser_Click)
+Gui.fPartMaint.framePartIni.Create(Frame)
+Gui.fPartMaint.framePartIni.Size(3825,4680)
+Gui.fPartMaint.framePartIni.Position(45,15)
+Gui.fPartMaint.framePartIni.Caption("Part  Type")
+Gui.fPartMaint.GsGCPartType.Create(GsGridControl)
+Gui.fPartMaint.GsGCPartType.Size(3690,3945)
+Gui.fPartMaint.GsGCPartType.Position(60,630)
+Gui.fPartMaint.GsGCPartType.Parent("framePartIni")
+Gui.fPartMaint.GsGCPartType.Event(RowCellClick,GsGCPartType_RowCellClick)
+Gui.fPartMaint.cmdSavePartIni.Create(Button)
+Gui.fPartMaint.cmdSavePartIni.Size(645,345)
+Gui.fPartMaint.cmdSavePartIni.Position(3060,210)
+Gui.fPartMaint.cmdSavePartIni.Parent("framePartIni")
+Gui.fPartMaint.cmdSavePartIni.Caption("Save")
+Gui.fPartMaint.cmdSavePartIni.Event(Click,cmdSavePartIni_Click)
+Gui.fPartMaint.txtPartIni.Create(TextBox,"",True,1680,300,0,585,240,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtPartIni.Parent("framePartIni")
+Gui.fPartMaint.txtPartIni.DefaultValue(" ")
+Gui.fPartMaint.lbl15.Create(Label,"Type",True,480,255,0,45,330,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl15.Parent("framePartIni")
+Gui.fPartMaint.chkPartSide.Create(CheckBox)
+Gui.fPartMaint.chkPartSide.Size(810,360)
+Gui.fPartMaint.chkPartSide.Position(2310,210)
+Gui.fPartMaint.chkPartSide.Parent("framePartIni")
+Gui.fPartMaint.chkPartSide.Caption("Side?")
+Gui.fPartMaint.frameCompType.Create(Frame)
+Gui.fPartMaint.frameCompType.Size(3840,4890)
+Gui.fPartMaint.frameCompType.Position(45,4725)
+Gui.fPartMaint.frameCompType.Caption("Component Type")
+Gui.fPartMaint.txtCompType.Create(TextBox,"",True,1680,300,0,630,270,True,0,"Arial",8,-2147483643,1)
+Gui.fPartMaint.txtCompType.Parent("frameCompType")
+Gui.fPartMaint.lbl9.Create(Label,"Type",True,480,255,0,90,360,True,0,"Arial",8,-2147483633,0)
+Gui.fPartMaint.lbl9.Parent("frameCompType")
+Gui.fPartMaint.cmdCompType.Create(Button)
+Gui.fPartMaint.cmdCompType.Size(645,345)
+Gui.fPartMaint.cmdCompType.Position(3135,240)
+Gui.fPartMaint.cmdCompType.Parent("frameCompType")
+Gui.fPartMaint.cmdCompType.Caption("Save")
+Gui.fPartMaint.cmdCompType.Event(Click,cmdCompType_Click)
+Gui.fPartMaint.chkCompSide.Create(CheckBox)
+Gui.fPartMaint.chkCompSide.Size(810,360)
+Gui.fPartMaint.chkCompSide.Position(2385,240)
+Gui.fPartMaint.chkCompSide.Parent("frameCompType")
+Gui.fPartMaint.chkCompSide.Caption("Side?")
+Gui.fPartMaint.GsGCompType.Create(GsGridControl)
+Gui.fPartMaint.GsGCompType.Size(3675,4185)
+Gui.fPartMaint.GsGCompType.Position(90,630)
+Gui.fPartMaint.GsGCompType.Parent("frameCompType")
+Gui.fPartMaint.GsGCompType.Event(RowCellClick,GsGCompType_RowCellClick)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'GCG_4928_Maint.g2u
+'Originally Written by Ashwin D
+'For TMJ Concepts
+'Modified by Trey S
+'4/18/19
+'This script is the maintenace screen for TMJs auto quote generation project.
+'It allows the users to set up parts, components, and combinations that are used to generate quotes, BOMs, and routers
+'These are generated in GCG_4928_QteAutoLineGen.g2u, from the quote header screen
+
+f.Intrinsic.Control.CallSub(LoadMaint)
+Program.Sub.Main.End
+
+Program.Sub.fPartMaint_UnLoad.Start
+f.Intrinsic.Control.End
+Program.Sub.fPartMaint_UnLoad.End
+
+Program.Sub.LoadMaint.Start
+f.Intrinsic.Control.CallSub(GetMaintData)
+f.Intrinsic.Control.CallSub(LoadScreen)
+gui.fPartMaint..Show
+Program.Sub.LoadMaint.End
+
+Program.Sub.GetMaintData.Start
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Data.DataTable.CreateFromSQL("PartTypeDT","Conx","Select PART_TYPE, SIDE from GCG_4928_PARTTYPE",True)
+	f.Data.DataTable.AddColumn("PartTypeDT","DELETE","String")
+	f.Data.DataTable.CreateFromSQL("CompTypeDT","Conx","Select COMP_TYPE, SIDE from GCG_4928_COMPTYPE",True)
+	f.Data.DataTable.AddColumn("CompTypeDT","DELETE","String")
+	f.Data.DataTable.CreateFromSQL("ChrgCodeDT","Conx","Select CHRGCODE, CHRGAMT from GCG_4928_CHRGCODE",True)
+	f.Data.DataTable.AddColumn("ChrgCodeDT","DELETE","String")
+	f.Data.DataTable.CreateFromSQL("CompDescDT","Conx","Select COMP_SFX, COMP_TYPE,COMP_SIDE,RTRIM(DESCRIPTION) as DESCRIPTION,RTRIM(ROUTER) as Router,RTRIM(TI_ROUTER) as TI_Router, RTRIM(BLANK_ROUTER) as BLANK_ROUTER, RTRIM(TI_BLANK_ROUTER) as TI_BLANK_ROUTER from GCG_4928_COMPDESC",True)
+	f.Data.DataTable.AddColumn("CompDescDT","DELETE","String")
+	f.Data.DataTable.CreateFromSQL("PartDT","Conx","Select PARTID, PART_TYPE, CHARGE_CODE, SIDE, PRODUCT_LINE, RTRIM(DESCRIPTION) as DESCRIPTION, ALL_TI, BLANK from GCG_4928_PART",True)
+	f.Data.DataTable.AddColumn("PartDT","DELETE","String")
+	f.Data.DataTable.CreateFromSQL("PartCompDT","Conx","Select PARTID,COMP_SFX, SEQ_NO from GCG_4928_PARTCOMP",True)
+	f.Data.DataTable.AddColumn("PartCompDT","DELETE","String")
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops something went wrong. Please contact Tech Support.")
+	f.ODBC.Connection!conx.Close
+	f.Intrinsic.Control.CallSub(fPartMaint_UnLoad)
+f.Intrinsic.Control.EndTry
+Program.Sub.GetMaintData.End
+
+Program.Sub.LoadScreen.Start
+'load drop downs.
+v.Local.sCompTypeDdl.Declare
+v.Local.sPartTypeDdl.Declare
+v.Local.sChrgCodeDdl.Declare
+v.Local.sPartIDDdl.Declare
+v.Local.sCompIdDdl.Declare
+v.Local.sRouter.Declare
+v.Local.sPL.Declare
+v.Local.sTiRouter.Declare
+
+f.Data.Dictionary.CreateFromDatatable("PartTypeDict","PartTypeDT","PART_TYPE","PART_TYPE")
+f.Data.Dictionary.AddItem("PartTypeDict",""," ")
+gui.fPartMaint.ddlPartType.addItems("Dictionary","PartTypeDict")
+
+f.data.DataView.Create("PartTypeDT","PartTypeVw",22)
+
+f.Data.Dictionary.CreateFromDatatable("CompTypeDict","CompTypeDT","COMP_TYPE","COMP_TYPE")
+f.Data.Dictionary.AddItem("CompTypeDict",""," ")
+gui.fPartMaint.ddlCompType.addItems("Dictionary","CompTypeDict")
+
+f.data.DataView.Create("CompTypeDT","CompTypeVw",22)
+
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.ODBC.Connection!conx.executeandreturn("select distinct Router from V_ROUTER_HEADER where UCASE(SORT_2) like '%TEMP%'",v.Local.srouter)
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+f.Intrinsic.String.replace(v.Local.sRouter,"#$#","*!*",v.Local.sRouter)
+v.Local.sTiRouter.Set(v.Local.sRouter)
+
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.ODBC.Connection!conx.executeandreturn("select PRODUCT_LINE from V_PRODUCT_LINE",v.Local.sPL)
+	f.Data.Dictionary.CreateFromSQL("PLDict","Conx","select PRODUCT_LINE,PRODUCT_LINE as PL from V_PRODUCT_LINE")
+	f.Data.Dictionary.AddItem("PLDict"," "," ")
+	gui.fPartMaint.ddlPL.addItems("Dictionary","PLDict")
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+f.Intrinsic.String.replace(v.Local.sPL,"#$#","*!*",v.Local.sPL)
+
+f.Data.Dictionary.CreateFromDatatable("ChrgCodeDict","ChrgCodeDT","CHRGCODE","CHRGCODE")
+f.Data.Dictionary.AddItem("ChrgCodeDict",""," ")
+gui.fPartMaint.ddlChgCode.addItems("Dictionary","ChrgCodeDict")
+
+f.data.DataView.Create("ChrgCodeDT","ChrgCodeVw",22)
+
+gui.fPartMaint.ddlPSide.AddItem(" ")
+gui.fPartMaint.ddlPSide.AddItem("Left")
+gui.fPartMaint.ddlPSide.AddItem("Right")
+gui.fPartMaint.ddlPSide.AddItem("Anterior")
+
+gui.fPartMaint.ddlCSide.AddItem(" ")
+gui.fPartMaint.ddlCSide.AddItem("Left")
+gui.fPartMaint.ddlCSide.AddItem("Right")
+'gui.fPartMaint.ddlCSide.AddItem("Anterior")
+
+f.Data.Dictionary.CreateFromDatatable("PartDict","PartDT","PARTID","PARTID")
+f.Data.Dictionary.AddItem("PartDict",""," ")
+gui.fPartMaint.ddlSlNo.addItems("Dictionary","PartDict")
+
+f.data.DataView.Create("PartDT","PartVw",22)
+
+f.Data.Dictionary.CreateFromDatatable("CompDict","CompDescDT","COMP_SFX","COMP_SFX")
+f.Data.Dictionary.AddItem("CompDict",""," ")
+gui.fPartMaint.ddlCompID.addItems("Dictionary","CompDict")
+
+f.data.DataView.Create("CompDescDT","CompDescVw",22)
+
+gui.fPartMaint.GsGCPartType.AddGridviewFromDatatable("PartTypeGrid","PartTypeDT")
+
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "PART_TYPE", "headerforecolor", v.Color.PRI-GSS-00)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "PART_TYPE", "headerfontbold", True)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "PART_TYPE", "ReadOnly", True)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "PART_TYPE", "AllowEdit", False)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "PART_TYPE", "caption", "Part Type")
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "PART_TYPE", "MinWidth",80)
+
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "SIDE", "headerforecolor", v.Color.PRI-GSS-00)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "SIDE", "headerfontbold", True)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "SIDE", "ReadOnly", True)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "SIDE", "AllowEdit", False)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "SIDE", "caption", "Side?")
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "SIDE", "MinWidth",60)
+
+gui.fPartMaint.GsGCPartType.ColumnEdit("PartTypeGrid","Delete","EditorButton","Delete")
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "Delete", "headerforecolor", v.Color.PRI-GSS-00)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "Delete", "headerfontbold", True)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "Delete", "ReadOnly", True)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "Delete", "AllowEdit", False)
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "Delete", "caption", "Delete")
+gui.fPartMaint.GsGCPartType.SetColumnProperty("PartTypeGrid", "Delete", "MinWidth", 50)
+
+gui.fPartMaint.GsGCPartType.MainView("PartTypeGrid")
+
+gui.fPartMaint.GsGCompType.AddGridviewFromDatatable("CompTypeGrid","CompTypeDT")
+
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "COMP_TYPE", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "COMP_TYPE", "headerfontbold", True)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "COMP_TYPE", "ReadOnly", True)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "COMP_TYPE", "AllowEdit", False)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "COMP_TYPE", "caption", "Component Type")
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "COMP_TYPE", "MinWidth",80)
+
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "SIDE", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "SIDE", "headerfontbold", True)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "SIDE", "ReadOnly", True)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "SIDE", "AllowEdit", False)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "SIDE", "caption", "Side?")
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "SIDE", "MinWidth",60)
+
+gui.fPartMaint.GsGCompType.ColumnEdit("CompTypeGrid","Delete","EditorButton","Delete")
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "Delete", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "Delete", "headerfontbold", True)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "Delete", "ReadOnly", True)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "Delete", "AllowEdit", False)
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "Delete", "caption", "Delete")
+Gui.fPartMaint.GsGCompType.SetColumnProperty("CompTypeGrid", "Delete", "MinWidth", 50)
+
+gui.fPartMaint.GsGCompType.MainView("CompTypeGrid")
+
+gui.fPartMaint.GsGCChgCode.AddGridviewFromDatatable("ChrgCodeGrid","ChrgCodeDT")
+
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGCODE", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGCODE", "headerfontbold", True)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGCODE", "ReadOnly", True)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGCODE", "AllowEdit", False)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGCODE", "caption", "Charge Code")
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGCODE", "MinWidth",120)
+
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "headerfontbold", True)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "ReadOnly", False)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "AllowEdit", True)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "EditMaskType", "numeric")
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "EditMask","#######.00")
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "EditMaskAsDisplayFormat",True)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "caption", "Charge Amount")
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "CHRGAMT", "MinWidth",120)
+
+gui.fPartMaint.GsGCChgCode.ColumnEdit("ChrgCodeGrid","Delete","EditorButton","Delete")
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "Delete", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "Delete", "headerfontbold", True)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "Delete", "ReadOnly", True)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "Delete", "AllowEdit", False)
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "Delete", "caption", "Delete")
+Gui.fPartMaint.GsGCChgCode.SetColumnProperty("ChrgCodeGrid", "Delete", "MinWidth", 50)
+
+gui.fPartMaint.GsGCChgCode.MainView("ChrgCodeGrid")
+
+gui.fPartMaint.GsGCComp.AddGridviewFromDatatable("CompDescGrid","CompDescDT")
+
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SFX", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SFX", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SFX", "ReadOnly", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SFX", "AllowEdit", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SFX", "caption", "ID")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SFX", "MinWidth",40)
+
+f.Data.DataView.ToString("CompTypeDT","CompTypeVw","COMP_TYPE","","*!*",v.Local.sCompTypeDdl)
+F.Intrinsic.String.Build("*!*{0}", v.Local.sCompTypeDdl, v.Local.sCompTypeDdl)
+F.Intrinsic.String.Build("*!*{0}", v.Local.sRouter, v.Local.sRouter)
+F.Intrinsic.String.Build("*!*{0}", v.Local.sTiRouter, v.Local.sTiRouter)
+
+gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","COMP_TYPE","Dropdownlist",v.Local.sCompTypeDdl)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_TYPE", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_TYPE", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_TYPE", "ReadOnly", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_TYPE", "AllowEdit", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_TYPE", "caption", "Comp Type")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_TYPE", "MinWidth",60)
+
+gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","ROUTER","Dropdownlist",v.Local.sRouter)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "ROUTER", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "ROUTER", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "ROUTER", "ReadOnly", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "ROUTER", "AllowEdit", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "ROUTER", "caption", "Router")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "ROUTER", "MinWidth", 90)
+
+gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","TI_ROUTER","Dropdownlist",v.Local.sTiRouter)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_ROUTER", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_ROUTER", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_ROUTER", "ReadOnly", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_ROUTER", "AllowEdit", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_ROUTER", "caption", "All Ti Router")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_ROUTER", "MinWidth", 90)
+
+gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","BLANK_ROUTER","Dropdownlist",v.Local.sTiRouter)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "BLANK_ROUTER", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "BLANK_ROUTER", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "BLANK_ROUTER", "ReadOnly", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "BLANK_ROUTER", "AllowEdit", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "BLANK_ROUTER", "caption", "Blank Router")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "BLANK_ROUTER", "MinWidth", 90)
+
+gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","TI_BLANK_ROUTER","Dropdownlist",v.Local.sTiRouter)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_BLANK_ROUTER", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_BLANK_ROUTER", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_BLANK_ROUTER", "ReadOnly", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_BLANK_ROUTER", "AllowEdit", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_BLANK_ROUTER", "caption", "All Ti Blank Router")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "TI_BLANK_ROUTER", "MinWidth", 90)
+
+gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","COMP_SIDE","Dropdownlist"," *!*Left*!*Right*!*Anterior")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SIDE", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SIDE", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SIDE", "ReadOnly", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SIDE", "AllowEdit", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SIDE", "caption", "Side")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "COMP_SIDE", "MinWidth",40)
+
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "DESCRIPTION", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "DESCRIPTION", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "DESCRIPTION", "ReadOnly", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "DESCRIPTION", "AllowEdit", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "DESCRIPTION", "caption", "Description")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "DESCRIPTION", "MinWidth",160)
+
+gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","Delete","EditorButton","Delete")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "Delete", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "Delete", "headerfontbold", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "Delete", "ReadOnly", True)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "Delete", "AllowEdit", False)
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "Delete", "caption", "Delete")
+Gui.fPartMaint.GsGCComp.SetColumnProperty("CompDescGrid", "Delete", "MinWidth", 50)
+
+gui.fPartMaint.GsGCComp.MainView("CompDescGrid")
+
+gui.fPartMaint.GsGCPart.AddGridviewFromDatatable("PartDTGrid","PartDT")
+
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PartID", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PartID", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PartID", "ReadOnly", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PartID", "AllowEdit", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PartID", "caption", "Sl. No")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PartID", "MinWidth",40)
+
+f.Data.DataView.ToString("ChrgCodeDT","ChrgCodeVw","CHRGCODE","","*!*",v.Local.sChrgCodeDdl)
+F.Intrinsic.String.Build("*!*{0}", v.Local.sChrgCodeDdl, v.Local.sChrgCodeDdl)
+
+gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","CHARGE_CODE","Dropdownlist",v.Local.sChrgCodeDdl)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "CHARGE_CODE", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "CHARGE_CODE", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "CHARGE_CODE", "ReadOnly", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "CHARGE_CODE", "AllowEdit", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "CHARGE_CODE", "caption", "Charge Code")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "CHARGE_CODE", "MinWidth",60)
+
+f.Data.DataView.ToString("PartTypeDT","PartTypeVw","PART_TYPE","","*!*",v.Local.sPartTypeDdl)
+F.Intrinsic.String.Build("*!*{0}", v.Local.sPartTypeDdl, v.Local.sPartTypeDdl)
+
+gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","PART_TYPE","Dropdownlist",v.Local.sPartTypeDdl)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PART_TYPE", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PART_TYPE", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PART_TYPE", "ReadOnly", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PART_TYPE", "AllowEdit", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PART_TYPE", "caption", "Part Type")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "PART_TYPE", "MinWidth",100)
+
+gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","Product_Line","Dropdownlist",v.Local.sPL)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Product_Line", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Product_Line", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Product_Line", "ReadOnly", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Product_Line", "AllowEdit", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Product_Line", "caption", "PL")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Product_Line", "MinWidth",40)
+
+gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","SIDE","Dropdownlist"," *!*Left*!*Right*!*Anterior")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "SIDE", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "SIDE", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "SIDE", "ReadOnly", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "SIDE", "AllowEdit", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "SIDE", "caption", "Side")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "SIDE", "MinWidth",60)
+
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Description", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Description", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Description", "ReadOnly", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Description", "AllowEdit", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Description", "caption", "Description")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Description", "MinWidth",150)
+
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "ALL_TI", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "ALL_TI", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "ALL_TI", "ReadOnly", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "ALL_TI", "AllowEdit", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "ALL_TI", "caption", "All Titanium")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "ALL_TI", "MinWidth",60)
+
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "BLANK", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "BLANK", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "BLANK", "ReadOnly", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "BLANK", "AllowEdit", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "BLANK", "caption", "Blank")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "BLANK", "MinWidth",60)
+
+gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","Delete","EditorButton","Delete")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Delete", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Delete", "headerfontbold", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Delete", "ReadOnly", True)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Delete", "AllowEdit", False)
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Delete", "caption", "Delete")
+Gui.fPartMaint.GsGCPart.SetColumnProperty("PartDTGrid", "Delete", "MinWidth", 50)
+
+gui.fPartMaint.GsGCPart.MainView("PartDTGrid")
+
+f.Data.DataView.Create("PartCompDT","PartCompVw",22,"PARTID = 0","SEQ_NO ASC")
+gui.fPartMaint.GsGCPrtComp.AddGridviewFromDataView("PartCompGrid","PartCompDT","PartCompVw")
+
+'f.Data.DataView.ToString("PartDT","PartVw","PartID","","*!*",v.Local.sPartIDDdl)
+
+'gui.fPartMaint.GsGCPrtComp.ColumnEdit("PartCompGrid","PartID","Dropdownlist",v.Local.sPartIDDdl)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "PartID", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "PartID", "headerfontbold", True)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "PartID", "ReadOnly", True)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "PartID", "AllowEdit", False)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "PartID", "caption", "Part Sl. No")
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "PartID", "MinWidth",40)
+
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "COMP_SFX", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "COMP_SFX", "headerfontbold", True)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "COMP_SFX", "ReadOnly", True)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "COMP_SFX", "AllowEdit", False)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "COMP_SFX", "caption", "Comp ID")
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "COMP_SFX", "MinWidth",40)
+
+f.Data.DataView.ToString("CompDescDT","CompDescVw","COMP_SFX","","*!*",v.Local.sCompIdDdl)
+F.Intrinsic.String.Build("*!*{0}", v.Local.sCompIdDdl, v.Local.sCompIdDdl)
+
+gui.fPartMaint.GsGCPrtComp.ColumnEdit("PartCompGrid","SEQ_NO","Dropdownlist",v.Local.sCompIdDdl)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "SEQ_NO", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "SEQ_NO", "headerfontbold", True)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "SEQ_NO", "ReadOnly", True)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "SEQ_NO", "AllowEdit", False)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "SEQ_NO", "caption", "Sequence")
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "SEQ_NO", "MinWidth",80)
+
+gui.fPartMaint.GsGCPrtComp.ColumnEdit("PartCompGrid","Delete","EditorButton","Delete")
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "Delete", "headerforecolor", v.Color.PRI-GSS-00)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "Delete", "headerfontbold", True)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "Delete", "ReadOnly", True)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "Delete", "AllowEdit", False)
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "Delete", "caption", "Delete")
+Gui.fPartMaint.GsGCPrtComp.SetColumnProperty("PartCompGrid", "Delete", "MinWidth", 50)
+
+gui.fPartMaint.GsGCPrtComp.MainView("PartCompGrid")
+Program.Sub.LoadScreen.End
+
+Program.Sub.cmdSavePartIni_Click.Start
+v.Local.sType.Declare
+v.Local.sFilter.Declare
+v.Local.bSide.Declare
+v.Local.sSQL.Declare
+v.Local.sPartTypeDdl.declare
+
+gui.fPartMaint.cmdSavePartIni.Enabled(False)
+f.Intrinsic.Control.If(v.Screen.fPartMaint!txtPartIni.Text.trim,=,"")
+	f.Intrinsic.UI.Msgbox("You need to enter a part type before saving.")
+	gui.fPartMaint.cmdSavePartIni.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("PART_TYPE = '{0}'",v.Screen.fPartMaint!txtPartIni.Text.trim,v.Local.sFilter)
+f.Data.Dataview.Create("PartTypeDT","CheckVw",22,v.Local.sFilter,"")
+f.Intrinsic.Control.If(v.DataView.PartTypeDT!CheckVw.RowCount,>,0)
+	f.Intrinsic.UI.Msgbox("Part Type already exists in the database.")
+	f.Data.DataView.Close("PartTypeDT","CheckVw")
+	gui.fPartMaint.cmdSavePartIni.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+f.Data.DataView.Close("PartTypeDT","CheckVw")
+
+v.Local.bSide.Set(v.Screen.fPartMaint!chkPartSide.CheckedAsBoolean)
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.String.Build("Insert Into GCG_4928_PARTTYPE Values ('{0}',{1})",v.Screen.fPartMaint!txtPartIni.Text.trim,v.Local.bSide.Long,v.Local.sSql)
+	f.ODBC.Connection!conx.Execute(v.Local.sSql)
+	
+	f.Data.DataView.ToString("PartTypeDT","PartTypeVw","PART_TYPE","","*!*",v.Local.sPartTypeDdl)
+	gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","PART_TYPE","Dropdownlist",v.Local.sPartTypeDdl)
+	f.Data.Dictionary.AddItem("PartTypeDict",v.Screen.fPartMaint!txtPartIni.Text,v.Screen.fPartMaint!txtPartIni.Text)
+	gui.fPartMaint.ddlPartType.ClearItems
+	gui.fPartMaint.ddlPartType.addItems("Dictionary","PartTypeDict")
+	
+	f.Data.DataTable.AddRow("PartTypeDT","PART_TYPE",v.Screen.fPartMaint!txtPartIni.Text.trim,"SIDE",v.Local.bSide)
+	gui.fPartMaint.chkPartSide.Value(0)
+	gui.fPartMaint.txtPartIni.Text("")
+	gui.fPartMaint.cmdSavePartIni.Enabled(True)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. You may try again or contact Global Shop Solutions for assistance.")
+	gui.fPartMaint.cmdSavePartIni.Enabled(True)
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdSavePartIni_Click.End
+
+Program.Sub.cmdCompType_Click.Start
+v.Local.sType.Declare
+v.Local.sFilter.Declare
+v.Local.bSide.Declare
+v.Local.sSQL.Declare
+v.Local.sCompTypeDdl.Declare
+gui.fPartMaint.cmdCompType.Enabled(False)
+f.Intrinsic.Control.If(v.Screen.fPartMaint!txtCompType.Text.trim,=,"")
+	f.Intrinsic.UI.Msgbox("You need to enter a comp type before saving.")
+	gui.fPartMaint.cmdCompType.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("COMP_TYPE = '{0}'",v.Screen.fPartMaint!txtCompType.Text.trim,v.Local.sFilter)
+f.Data.Dataview.Create("CompTypeDt","CheckVw",22,v.Local.sFilter,"")
+f.Intrinsic.Control.If(v.DataView.CompTypeDt!CheckVw.RowCount,>,0)
+	f.Intrinsic.UI.Msgbox("Comp Type already exists in the database.")
+	f.Data.DataView.Close("CompTypeDt","CheckVw")
+	gui.fPartMaint.cmdCompType.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+f.Data.DataView.Close("CompTypeDt","CheckVw")
+
+v.Local.bSide.Set(v.Screen.fPartMaint!chkCompSide.CheckedAsBoolean)
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.String.Build("Insert Into GCG_4928_COMPTYPE Values ('{0}',{1})",v.Screen.fPartMaint!txtCompType.Text.trim,v.Local.bSide.Long,v.Local.sSql)
+	f.ODBC.Connection!conx.Execute(v.Local.sSql)
+	f.Data.DataView.ToString("CompTypeDT","CompTypeVw","COMP_TYPE","","*!*",v.Local.sCompTypeDdl)
+	gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","COMP_TYPE","Dropdownlist",v.Local.sCompTypeDdl)
+	f.Data.Dictionary.AddItem("CompTypeDict",v.Screen.fPartMaint!txtCompType.Text,v.Screen.fPartMaint!txtCompType.Text)
+	gui.fPartMaint.ddlCompType.ClearItems
+	gui.fPartMaint.ddlCompType.addItems("Dictionary","CompTypeDict")
+	f.Data.DataTable.AddRow("CompTypeDT","COMP_TYPE",v.Screen.fPartMaint!txtCompType.Text.trim,"SIDE",v.Local.bSide)
+	gui.fPartMaint.chkCompSide.Value(0)
+	gui.fPartMaint.txtCompType.Text("")
+
+	gui.fPartMaint.cmdCompType.Enabled(True)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. You may try again or contact Global Shop Solutions for assistance.")
+	gui.fPartMaint.cmdCompType.Enabled(True)
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdCompType_Click.End
+
+Program.Sub.cmdSavePrt_Click.Start
+v.Local.sType.Declare
+v.Local.sFilter.Declare
+v.Local.bAllTi.Declare
+v.Local.sSQL.Declare
+V.Local.bBlank.Declare(Boolean)
+
+gui.fPartMaint.cmdSavePrt.Enabled(False)
+f.Intrinsic.Control.If(v.Screen.fPartMaint!txtSlNo.Text.long,=,0,"OR",v.Screen.fPartMaint!ddlPartType.Text.trim,=,"",v.Screen.fPartMaint!ddlPL.Text.trim,=,"",v.Screen.fPartMaint!ddlChgCode.Text.trim,=,"",v.Screen.fPartMaint!txtDescription.Text.trim,=,"")
+	f.Intrinsic.UI.Msgbox("You need to enter a valid Serial Number, Part Type, Charge code,PL and description before saving..")
+	gui.fPartMaint.cmdSavePrt.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("PartID = {0}",v.Screen.fPartMaint!txtCompType.Text.long,v.Local.sFilter)
+f.Data.Dataview.Create("PartDT","CheckVw",22,v.Local.sFilter,"")
+f.Intrinsic.Control.If(v.DataView.PartDT!CheckVw.RowCount,>,0)
+	f.Intrinsic.UI.Msgbox("The Serial No. already exists in the database.")
+	f.Data.DataView.Close("PartDT","CheckVw")
+	gui.fPartMaint.cmdSavePrt.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+f.Data.DataView.Close("PartDT","CheckVw")
+
+v.Local.bAllTi.Set(v.Screen.fPartMaint!chkAllTi.CheckedAsBoolean)
+V.Local.bBlank.Set(V.Screen.fPartMaint!chkBlank.checkedAsBoolean)
+'f.Intrinsic.Control.Try
+
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.String.Build("Insert Into GCG_4928_PART Values ({0}, '{1}', '{2}', '{3}', '{4}', {5}, '{6}', {7})", v.Screen.fPartMaint!txtSlNo.Text.long, v.Screen.fPartMaint!ddlPartType.Text.trim, v.Screen.fPartMaint!ddlChgCode.Text.trim, v.Screen.fPartMaint!ddlPSide.Text.trim, v.Screen.fPartMaint!txtDescription.Text.trim, v.Local.bAllTi.Long, v.Screen.fPartMaint!ddlPL.Text.trim, V.Local.bBlank.Long, v.Local.sSql)
+	f.ODBC.Connection!conx.Execute(v.Local.sSql)
+
+	f.Data.DataTable.AddRow("PartDT", "PARTID", v.Screen.fPartMaint!txtSlNo.Text.trim, "PART_TYPE", v.Screen.fPartMaint!ddlPartType.Text.trim, "CHARGE_CODE", v.Screen.fPartMaint!ddlChgCode.Text.trim, "DESCRIPTION", v.Screen.fPartMaint!txtDescription.Text.trim, "ALL_TI", v.Local.bAllTi, "Product_Line", v.Screen.fPartMaint!ddlPL.Text.trim, "BLANK", V.Local.bBlank)
+	gui.fPartMaint.chkAllTi.Value(0)
+	gui.fPartMaint.txtSlNo.Text("")
+	gui.fPartMaint.txtDescription.Text("")
+	gui.fPartMaint.ddlPSide.Text(" ")
+	gui.fPartMaint.ddlPartType.Text(" ")
+	gui.fPartMaint.ddlChgCode.Text(" ")
+	gui.fPartMaint.ddlPL.Text(" ")
+	
+	gui.fPartMaint.cmdSavePrt.Enabled(True)
+'f.Intrinsic.Control.Catch
+'	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. You may try again or contact Global Shop Solutions for assistance.")
+'	gui.fPartMaint.cmdSavePrt.Enabled(True)
+'f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+'f.Intrinsic.Control.EndTry
+Program.Sub.cmdSavePrt_Click.End
+
+Program.Sub.cmdSaveChrgCode_Click.Start
+v.Local.sType.Declare
+v.Local.sFilter.Declare
+v.Local.bSide.Declare
+v.Local.sSQL.Declare
+v.Local.sChrgCodeDdl.Declare
+gui.fPartMaint.cmdSaveChrgCode.Enabled(False)
+f.Intrinsic.Control.If(v.Screen.fPartMaint!txtChgCode.Text.trim,=,"","OR",v.Screen.fPartMaint!txtChgAmt.Text.Float,<,1)
+	f.Intrinsic.UI.Msgbox("You need to enter a valid charge code and amount before saving")
+	gui.fPartMaint.cmdSaveChrgCode.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("CHRGCODE = '{0}'",v.Screen.fPartMaint!txtChgCode.Text.trim,v.Local.sFilter)
+f.Data.Dataview.Create("ChrgCodeDT","CheckVw",22,v.Local.sFilter,"")
+f.Intrinsic.Control.If(v.DataView.ChrgCodeDT!CheckVw.RowCount,>,0)
+	f.Intrinsic.UI.Msgbox("Charge code already exists in the database.")
+	f.Data.DataView.Close("ChrgCodeDT","CheckVw")
+	gui.fPartMaint.cmdSaveChrgCode.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+f.Data.DataView.Close("ChrgCodeDT","CheckVw")
+
+v.Local.bSide.Set(v.Screen.fPartMaint!chkCompSide.CheckedAsBoolean)
+f.Intrinsic.Control.Try
+	
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.String.Build("Insert Into GCG_4928_CHRGCODE Values ('{0}',{1})",v.Screen.fPartMaint!txtChgCode.Text.trim,v.Screen.fPartMaint!txtChgAmt.Text.Float,v.Local.sSql)
+	f.ODBC.Connection!conx.Execute(v.Local.sSql)
+	f.Data.DataView.ToString("ChrgCodeDT","ChrgCodeVw","CHRGCODE","","*!*",v.Local.sChrgCodeDdl)
+	gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","CHARGE_CODE","Dropdownlist",v.Local.sChrgCodeDdl)
+	f.Data.Dictionary.AddItem("ChrgCodeDict",v.Screen.fPartMaint!txtChgCode.Text,v.Screen.fPartMaint!txtChgCode.Text)
+	gui.fPartMaint.ddlChgCode.ClearItems
+	gui.fPartMaint.ddlChgCode.addItems("Dictionary","ChrgCodeDict")
+	f.Data.DataTable.AddRow("ChrgCodeDT","CHRGCODE",v.Screen.fPartMaint!txtChgCode.Text.trim,"CHRGAMT",v.Screen.fPartMaint!txtChgAmt.Text.float)
+	gui.fPartMaint.txtChgAmt.Text("0")
+	gui.fPartMaint.txtChgCode.Text("")
+
+	gui.fPartMaint.cmdSaveChrgCode.Enabled(True)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. You may try again or contact Global Shop Solutions for assistance.")
+	gui.fPartMaint.cmdSaveChrgCode.Enabled(True)
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdSaveChrgCode_Click.End
+
+Program.Sub.cmdPartComp_Click.Start
+v.Local.sSql.Declare
+v.Local.iSeq.Declare
+v.Local.sFilter.Declare
+gui.fPartMaint.cmdPartComp.Enabled(False)
+f.Intrinsic.Control.If(v.Screen.fPartMaint!ddlCompID.Text.trim,=,"")
+	f.Intrinsic.UI.Msgbox("You need to enter a valid Component IDbefore saving")
+	gui.fPartMaint.cmdPartComp.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("PARTID = {0} AND COMP_SFX = '{1}'",v.Screen.fPartMaint!txtPrtSlNo.Text.Long,v.Screen.fPartMaint!ddlCompID.text.trim,v.Local.sFilter)
+f.Data.Dataview.Create("PartCompDT","CheckVw",22,v.Local.sFilter,"")
+f.Intrinsic.Control.If(v.DataView.PartCompDT!CheckVw.RowCount,>,0)
+	f.Intrinsic.UI.Msgbox("Charge code already exists in the database.")
+	f.Data.DataView.Close("PartCompDT","CheckVw")
+	gui.fPartMaint.cmdPartComp.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+f.Data.DataView.Close("PartCompDT","CheckVw")
+
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.String.Build("Insert Into GCG_4928_PARTCOMP Values ({0},'{1}',{2})",v.Screen.fPartMaint!txtPrtSlNo.Text.Long,v.Screen.fPartMaint!ddlCompID.text.trim,v.Screen.fPartMaint!txtSeqNo.Text.Long,v.Local.sSql)
+	f.ODBC.Connection!conx.Execute(v.Local.sSql)
+	v.Local.iSeq.Set(v.Screen.fPartMaint!txtSeqNo.Text.Long)
+	f.Intrinsic.Math.Add(v.Local.iSeq,1,v.Local.iSeq)
+	
+	f.Data.DataTable.AddRow("PartCompDT","PARTID",v.Screen.fPartMaint!txtPrtSlNo.Text.Long,"COMP_SFX",v.Screen.fPartMaint!ddlCompID.Text.trim,"SEQ_NO",v.Screen.fPartMaint!txtSeqNo.text.long)
+	gui.fPartMaint.txtSeqNo.Text(v.Local.iSeq)
+	gui.fPartMaint.ddlCompID.Text(" ")
+	gui.fPartMaint.cmdPartComp.Enabled(True)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. You may try again or contact Global Shop Solutions for assistance.")
+	gui.fPartMaint.cmdPartComp.Enabled(True)
+f.Intrinsic.Control.Finally
+	gui.fPartMaint.cmdPartComp.Enabled(True)
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdPartComp_Click.End
+
+Program.Sub.cmdSaveComp_Click.Start
+v.Local.sType.Declare
+v.Local.sFilter.Declare
+v.Local.bSide.Declare
+v.Local.sSQL.Declare
+v.Local.sCompIdDdl.Declare
+gui.fPartMaint.cmdSaveComp.Enabled(False)
+f.Intrinsic.Control.If(v.Screen.fPartMaint!txtCompID.Text.trim,=,"","OR",v.Screen.fPartMaint!ddlCompType.Text.trim,=,"",v.Screen.fPartMaint!txtDescComp.Text.trim,=,"",v.Screen.fPartMaint!txtRouter.Text.trim,=,"")
+	f.Intrinsic.UI.Msgbox("You need to enter a valid ID, Component type and Template router before saving")
+	gui.fPartMaint.cmdSaveComp.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("COMP_SFX = '{0}'",v.Screen.fPartMaint!txtCompID.Text.trim,v.Local.sFilter)
+f.Data.Dataview.Create("CompDescDT","CheckVw",22,v.Local.sFilter,"")
+f.Intrinsic.Control.If(v.DataView.CompDescDT!CheckVw.RowCount,>,0)
+	f.Intrinsic.UI.Msgbox("Charge code already exists in the database.")
+	f.Data.DataView.Close("CompDescDT","CheckVw")
+	gui.fPartMaint.cmdSaveComp.Enabled(True)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+f.Data.DataView.Close("CompDescDT","CheckVw")
+
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.String.Build("Insert Into GCG_4928_COMPDESC Values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", v.Screen.fPartMaint!txtCompID.Text.trim, v.Screen.fPartMaint!ddlCompType.Text.trim, v.Screen.fPartMaint!ddlCSide.Text.trim, v.Screen.fPartMaint!txtDescComp.Text.trim, v.Screen.fPartMaint!txtRouter.Text.trim, v.Screen.fPartMaint!txtAllTiRouter.Text.trim, V.Screen.fPartMaint!txtBlankRouter.Text.Trim, V.Screen.fPartMaint!txtAllTiBlankRouter.Text.Trim, v.Local.sSql)
+	f.ODBC.Connection!conx.Execute(v.Local.sSql)
+	
+	f.Data.Dictionary.AddItem("CompDict",v.Screen.fPartMaint!txtCompID.Text,v.Screen.fPartMaint!txtCompID.Text)
+	gui.fPartMaint.ddlCompID.ClearItems
+	gui.fPartMaint.ddlCompID.addItems("Dictionary","CompDict")
+	
+	f.Data.DataTable.AddRow("CompDescDT","COMP_SFX",v.Screen.fPartMaint!txtCompID.Text.trim,"COMP_TYPE",v.Screen.fPartMaint!ddlCompType.Text.trim,"COMP_SIDE",v.Screen.fPartMaint!ddlCSide.Text.trim,"DESCRIPTION",v.Screen.fPartMaint!txtDescComp.Text.trim,"Router",v.Screen.fPartMaint!txtRouter.Text.trim,"Ti_Router",v.Screen.fPartMaint!txtAllTiRouter.Text.trim, "BLANK_ROUTER", V.Screen.fPartMaint!txtBlankRouter.Text.Trim, "TI_BLANK_ROUTER", V.Screen.fPartMaint!txtAllTiBlankRouter.Text.Trim)
+	gui.fPartMaint.txtCompID.Text("")
+	gui.fPartMaint.txtDescComp.Text("")
+	gui.fPartMaint.ddlCompType.Text(" ")
+	gui.fPartMaint.ddlCSide.Text(" ")
+	gui.fPartMaint.txtRouter.Text("")
+	gui.fPartMaint.txtAllTiRouter.Text("")
+	gui.fPartMaint.cmdSaveComp.Enabled(True)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. You may try again or contact Global Shop Solutions for assistance.")
+	gui.fPartMaint.cmdSaveComp.Enabled(True)
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdSaveComp_Click.End
+
+Program.Sub.ddlPartType_Click.Start
+v.Local.sFilter.Declare
+v.Local.sType.Declare
+
+f.Intrinsic.Control.If(v.screen.fPartMaint!ddlPartType.text.trim,=,"")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("PART_TYPE = '{0}'",v.screen.fPartMaint!ddlPartType.text,v.Local.sFilter)
+f.Data.DataView.SetFilter("PartTypeDT","PartTypeVw",v.Local.sFilter)
+f.Intrinsic.Control.If(v.DataView.PartTypeDT!PartTypeVw.RowCount,=,0)
+	f.Data.DataView.SetFilter("PartTypeDT","PartTypeVw","")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.If(v.Dataview.PartTypeDT!PartTypeVw(0).Side!FieldVal)
+	gui.fPartMaint.ddlPSide.Enabled(True)
+f.Intrinsic.Control.Else
+	gui.fPartMaint.ddlPSide.Enabled(False)
+f.Intrinsic.Control.EndIf
+Program.Sub.ddlPartType_Click.End
+
+Program.Sub.ddlCompType_Click.Start
+v.Local.sFilter.Declare
+v.Local.sType.Declare
+
+f.Intrinsic.Control.If(v.screen.fPartMaint!ddlCompType.text.trim,=,"")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("COMP_TYPE = '{0}'",v.screen.fPartMaint!ddlCompType.text,v.Local.sFilter)
+f.Data.DataView.SetFilter("CompTypeDt","CompTypeVw",v.Local.sFilter)
+f.Intrinsic.Control.If(v.DataView.CompTypeDt!CompTypeVw.RowCount,=,0)
+	f.Data.DataView.SetFilter("CompTypeDt","CompTypeVw","")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.If(v.Dataview.CompTypeDt!CompTypeVw(0).Side!FieldVal)
+	gui.fPartMaint.ddlCSide.Enabled(True)
+f.Intrinsic.Control.Else
+	gui.fPartMaint.ddlCSide.Enabled(False)
+f.Intrinsic.Control.EndIf
+Program.Sub.ddlCompType_Click.End
+
+Program.Sub.GsGCPartType_RowCellClick.Start
+v.Local.sSql.Declare
+v.Local.iRet.Declare
+v.Local.sPartTypeDdl.declare
+f.Intrinsic.Control.if(v.Args.column.UCase,=,"DELETE")
+	gui.fPartMaint..Enabled(false)
+	f.Intrinsic.ui.Msgbox("Are you sure you want to delete this record?","Delete Record?",4,v.Local.iRet)
+	f.Intrinsic.Control.if(v.Local.iRet,=,7)
+		gui.fPartMaint..Enabled(True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Build("Delete from GCG_4928_PARTTYPE where PART_TYPE = '{0}' ",v.DataTable.PartTypeDT(v.Args.RowIndex).PART_TYPE!FieldVal,v.Local.sSql)
+	
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.ODBC.Connection!conx.Execute(v.Local.sSql)
+		f.Data.Dictionary.RemoveItem("PartTypeDict",v.DataTable.PartTypeDT(v.Args.RowIndex).PART_TYPE!FieldVal)
+		gui.fPartMaint.ddlPartType.ClearItems
+		gui.fPartMaint.ddlPartType.addItems("Dictionary","PartTypeDict")
+		f.Data.DataTable.DeleteRow("PartTypeDT",v.Args.rowindex)
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		gui.fPartMaint..Enabled(True)
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.Elseif(v.Args.column.Ucase,=,"SIDE")
+	f.Intrinsic.Control.If(v.DataTable.PartTypeDT(v.Args.RowIndex).SIDE!FieldVal)
+		f.Data.DataTable.SetValue("PartTypeDT",v.Args.RowIndex,"SIDE",False)
+	f.Intrinsic.Control.Else
+		f.Data.DataTable.SetValue("PartTypeDT",v.Args.RowIndex,"SIDE",True)
+	f.Intrinsic.Control.EndIf
+	f.Data.DataView.ToDataTable("PartTypeDT","PartTypeVw","TempSavDt")
+	f.Data.DataView.ToString("PartTypeDT","PartTypeVw","PART_TYPE","","*!*",v.Local.sPartTypeDdl)
+	gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","PART_TYPE","Dropdownlist",v.Local.sPartTypeDdl)
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.Data.DataTable.SaveToDB("TempSavDt","CONX","GCG_4928_PARTTYPE","PART_TYPE",256,"PART_TYPE@!@PART_TYPE*!*SIDE@!@SIDE")
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. The value didn't get saved to the DB.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		f.Data.DataTable.Close("TempSavDt")
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.EndIf
+Program.Sub.GsGCPartType_RowCellClick.End
+
+Program.Sub.GsGCompType_RowCellClick.Start
+v.Local.sSql.Declare
+v.Local.iRet.Declare
+v.Local.sCompTypeDdl.Declare
+f.Intrinsic.Control.if(v.Args.column.UCase,=,"DELETE")
+	gui.fPartMaint..Enabled(false)
+	f.Intrinsic.ui.Msgbox("Are you sure you want to delete this record?","Delete Record?",4,v.Local.iRet)
+	f.Intrinsic.Control.if(v.Local.iRet,=,7)
+		gui.fPartMaint..Enabled(True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Build("Delete from GCG_4928_COMPTYPE where COMP_TYPE = '{0}' ",v.DataTable.CompTypeDT(v.Args.RowIndex).COMP_TYPE!FieldVal,v.Local.sSql)
+	
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.ODBC.Connection!conx.Execute(v.Local.sSql)
+		f.Data.Dictionary.RemoveItem("CompTypeDict",v.DataTable.CompTypeDT(v.Args.RowIndex).COMP_TYPE!FieldVal)
+		gui.fPartMaint.ddlCompType.ClearItems
+		gui.fPartMaint.ddlCompType.addItems("Dictionary","CompTypeDict")
+		f.Data.DataTable.DeleteRow("CompTypeDT",v.Args.rowindex)
+		f.Data.DataView.ToString("CompTypeDT","CompTypeVw","COMP_TYPE","","*!*",v.Local.sCompTypeDdl)
+		gui.fPartMaint.GsGCComp.ColumnEdit("CompDescGrid","COMP_TYPE","Dropdownlist",v.Local.sCompTypeDdl)
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		gui.fPartMaint..Enabled(True)
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.Elseif(v.Args.column.Ucase,=,"SIDE")
+	f.Intrinsic.Control.If(v.DataTable.CompTypeDT(v.Args.RowIndex).SIDE!FieldVal)
+		f.Data.DataTable.SetValue("CompTypeDT",v.Args.RowIndex,"SIDE",False)
+	f.Intrinsic.Control.Else
+		f.Data.DataTable.SetValue("CompTypeDT",v.Args.RowIndex,"SIDE",True)
+	f.Intrinsic.Control.EndIf
+	f.Data.DataView.ToDataTable("CompTypeDT","CompTypeVw","TempSavDt")
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.Data.DataTable.SaveToDB("TempSavDt","CONX","GCG_4928_COMPTYPE","COMP_TYPE",256,"COMP_TYPE@!@COMP_TYPE*!*SIDE@!@SIDE")
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. The value didn't get saved to the DB.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		f.Data.DataTable.Close("TempSavDt")
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.EndIf
+Program.Sub.GsGCompType_RowCellClick.End
+
+Program.Sub.GsGCPart_RowCellClick.Start
+v.Local.sSql.Declare
+v.Local.sSql2.Declare
+v.Local.sFilter.Declare
+v.Local.iRet.Declare
+v.Local.iRow.Declare
+
+f.Intrinsic.Control.if(v.Args.column.UCase,=,"DELETE")
+	gui.fPartMaint..Enabled(false)
+	f.Intrinsic.ui.Msgbox("Are you sure you want to delete this record? Deleting this record will delete all associate part to component association","Delete Record?",4,v.Local.iRet)
+	f.Intrinsic.Control.if(v.Local.iRet,=,7)
+		gui.fPartMaint..Enabled(True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Build("Delete from GCG_4928_PART where PARTID = {0} ",v.DataTable.PartDT(v.Args.RowIndex).PARTID!FieldVal,v.Local.sSql)
+	f.Intrinsic.String.Build("Delete from GCG_4928_PARTCOMP where PARTID = {0} ",v.DataTable.PartDT(v.Args.RowIndex).PARTID!FieldVal,v.Local.sSql2)
+	
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.ODBC.Connection!conx.Execute(v.Local.sSql)
+		f.ODBC.Connection!conx.Execute(v.Local.sSql2)
+		f.Intrinsic.Control.If(v.screen.fPartMaint!txtPrtSlNo.text.long,=,v.DataTable.PartDT(v.Args.RowIndex).PARTID!FieldValLong)
+			gui.fPartMaint.txtPrtSlNo.Text("")
+			gui.fPartMaint.GsGCPrtComp.SuspendLayout
+			f.Data.DataView.SetFilter("PartCompDT","PartCompVw","PARTID = ''")
+			gui.fPartMaint.GsGCPrtComp.ResumeLayout
+			gui.fPartMaint.framePartCompAssoc.Enabled(False)
+		f.Intrinsic.Control.EndIf
+		f.Data.Dictionary.RemoveItem("PartDict",v.DataTable.PartDT(v.Args.RowIndex).PARTID!FieldVal)
+
+		f.Data.DataTable.DeleteRow("PartDT",v.Args.rowindex)
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		gui.fPartMaint..Enabled(True)
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.Elseif(v.Args.column.Ucase,=,"ALL_TI")
+	f.Intrinsic.Control.If(v.DataTable.PartDT(v.Args.RowIndex).ALL_TI!FieldVal)
+		f.Data.DataTable.SetValue("PartDT",v.Args.RowIndex,"ALL_TI",False)
+	f.Intrinsic.Control.Else
+		f.Data.DataTable.SetValue("PartDT",v.Args.RowIndex,"ALL_TI",True)
+	f.Intrinsic.Control.EndIf
+	f.Data.DataView.ToDataTable("PartDT","PartVw","TempSavDt")
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.Data.DataTable.SaveToDB("TempSavDt","CONX","GCG_4928_PART","PARTID",256,"PARTID@!@PARTID*!*ALL_TI@!@ALL_TI")
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. The value didn't get saved to the DB.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		f.Data.DataTable.Close("TempSavDt")
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.Elseif(v.Args.column.Ucase,=,"BLANK")
+	f.Intrinsic.Control.If(v.DataTable.PartDT(v.Args.RowIndex).BLANK!FieldVal)
+		f.Data.DataTable.SetValue("PartDT",v.Args.RowIndex,"BLANK",False)
+	f.Intrinsic.Control.Else
+		f.Data.DataTable.SetValue("PartDT",v.Args.RowIndex,"BLANK",True)
+	f.Intrinsic.Control.EndIf
+	f.Data.DataView.ToDataTable("PartDT","PartVw","TempSavDt")
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.Data.DataTable.SaveToDB("TempSavDt","CONX","GCG_4928_PART","PARTID",256,"PARTID@!@PARTID*!*BLANK@!@BLANK")
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. The value didn't get saved to the DB.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		f.Data.DataTable.Close("TempSavDt")
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.Elseif(v.Args.column.Ucase,=,"PARTID")
+	gui.fPartMaint.txtPrtSlNo.Text(v.DataTable.PartDT(v.Args.RowIndex).PARTID!FieldVal)	
+	gui.fPartMaint.GsGCPrtComp.SuspendLayout
+	f.Intrinsic.String.Build("PARTID = {0}",v.DataTable.PartDT(v.Args.RowIndex).PARTID!FieldValLong,v.Local.sFilter)
+	f.Data.DataView.SetFilter("PartCompDT","PartCompVw",v.Local.sFilter)
+	v.Local.iRow.Set(v.Dataview.PartCompDT!PartCompVw.RowCount)
+	f.Intrinsic.Math.Add(v.Local.iRow,1,v.Local.iRow)
+	gui.fPartMaint.txtSeqNo.Text(v.Local.iRow)
+	gui.fPartMaint.GsGCPrtComp.ResumeLayout
+	gui.fPartMaint.framePartCompAssoc.Enabled(True)
+	
+f.Intrinsic.Control.EndIf
+Program.Sub.GsGCPart_RowCellClick.End
+
+Program.Sub.GsGCChgCode_RowCellClick.Start
+v.Local.sSql.Declare
+v.Local.iRet.Declare
+v.Local.sChrgCodeDdl.Declare
+f.Intrinsic.Control.if(v.Args.column.UCase,=,"DELETE")
+	gui.fPartMaint..Enabled(false)
+	f.Intrinsic.ui.Msgbox("Are you sure you want to delete this record?","Delete Record?",4,v.Local.iRet)
+	f.Intrinsic.Control.if(v.Local.iRet,=,7)
+		gui.fPartMaint..Enabled(True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Build("Delete from GCG_4928_CHRGCODE where CHRGCODE = '{0}' ",v.DataTable.ChrgCodeDT(v.Args.RowIndex).CHRGCODE!FieldVal,v.Local.sSql)
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.ODBC.Connection!conx.Execute(v.Local.sSql)
+		f.Data.Dictionary.RemoveItem("ChrgCodeDict",v.DataTable.ChrgCodeDT(v.Args.RowIndex).CHRGCODE!FieldVal)
+		gui.fPartMaint.ddlChgCode.ClearItems
+		gui.fPartMaint.ddlChgCode.addItems("Dictionary","ChrgCodeDict")
+		f.Data.DataTable.DeleteRow("ChrgCodeDT",v.Args.rowindex)
+		f.Data.DataView.ToString("ChrgCodeDT","ChrgCodeVw","CHRGCODE","","*!*",v.Local.sChrgCodeDdl)
+		gui.fPartMaint.GsGCPart.ColumnEdit("PartDTGrid","CHRGCODE","Dropdownlist",v.Local.sChrgCodeDdl)
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		gui.fPartMaint..Enabled(True)
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.EndIf
+Program.Sub.GsGCChgCode_RowCellClick.End
+
+Program.Sub.GsGCPrtComp_RowCellClick.Start
+v.Local.sSql.Declare
+v.Local.iSeq.Declare
+v.Local.iRet.Declare
+f.Intrinsic.Control.if(v.Args.column.UCase,=,"DELETE")
+	gui.fPartMaint..Enabled(false)
+	f.Intrinsic.ui.Msgbox("Are you sure you want to delete this record?","Delete Record?",4,v.Local.iRet)
+	f.Intrinsic.Control.if(v.Local.iRet,=,7)
+		gui.fPartMaint..Enabled(True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Build("Delete from GCG_4928_PARTCOMP where PARTID = {0} and COMP_SFX = '{1}' and SEQ_NO = {2} ",v.DataTable.PartCompDT(v.Args.RowIndex).PARTID!FieldVallong,v.DataTable.PartCompDT(v.Args.RowIndex).COMP_SFX!FieldValtrim,v.DataTable.PartCompDT(v.Args.RowIndex).SEQ_NO!FieldVallong,v.Local.sSql)
+
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.ODBC.Connection!conx.Execute(v.Local.sSql)
+
+		f.Data.DataTable.DeleteRow("PartCompDT",v.Args.rowindex)
+		f.Data.DataView.SetSeries("PartCompDT","PartCompVw","SEQ_NO",1,1)
+		f.Data.Dataview.ToDataTable("PartCompDT","PartCompVw","TempSavDt")
+		
+		f.Data.DataTable.SaveToDB("TempSavDt","Conx","GCG_4928_PARTCOMP","PARTID*!*COMP_SFX",256,"PARTID@!@PARTID*!*COMP_SFX@!@COMP_SFX*!*SEQ_NO@!@SEQ_NO")
+		v.Local.iSeq.set(v.Dataview.PartCompDT!PartCompVw.RowCount)
+		f.Intrinsic.Math.Add(v.Local.iSeq,1,v.Local.iSeq)
+		gui.fPartMaint.txtSeqNo.Text(v.Local.iSeq)
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		f.Data.DataTable.Close("TempSavDt")
+		gui.fPartMaint..Enabled(True)
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.EndIf
+Program.Sub.GsGCPrtComp_RowCellClick.End
+
+Program.Sub.GsGCComp_RowCellClick.Start
+v.Local.sSql.Declare
+v.Local.iRet.Declare
+v.Local.sCompIdDdl.Declare
+f.Intrinsic.Control.if(v.Args.column.UCase,=,"DELETE")
+	gui.fPartMaint..Enabled(false)
+	f.Intrinsic.ui.Msgbox("Are you sure you want to delete this record?","Delete Record?",4,v.Local.iRet)
+	f.Intrinsic.Control.if(v.Local.iRet,=,7)
+		gui.fPartMaint..Enabled(True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Build("Delete from GCG_4928_COMPDESC where COMP_SFX = '{0}' ",v.DataTable.CompDescDT(v.Args.RowIndex).COMP_SFX!FieldVal,v.Local.sSql)
+	
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.ODBC.Connection!conx.Execute(v.Local.sSql)
+		f.Data.Dictionary.RemoveItem("CompDict",v.DataTable.CompDescDT(v.Args.RowIndex).COMP_SFX!FieldVal)
+		gui.fPartMaint.ddlCompID.ClearItems
+		gui.fPartMaint.ddlCompID.addItems("Dictionary","CompDict")
+		f.Data.DataTable.DeleteRow("CompDescDT",v.Args.rowindex)
+
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+	f.Intrinsic.Control.Finally
+		f.ODBC.Connection!conx.Close
+		gui.fPartMaint..Enabled(True)
+	f.Intrinsic.Control.EndTry
+f.Intrinsic.Control.EndIf
+Program.Sub.GsGCComp_RowCellClick.End
+
+Program.Sub.GsGCPart_CellValueChanged.Start
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Data.DataTable.SaveToDB("PartDT","Conx","GCG_4928_PART","PARTID",256,"PARTID@!@PARTID*!*PART_TYPE@!@PART_TYPE*!*CHARGE_CODE@!@CHARGE_CODE*!*SIDE@!@SIDE*!*DESCRIPTION@!@DESCRIPTION*!*ALL_TI@!@ALL_TI*!*Product_Line@!@Product_Line*!*BLANK@!@BLANK")
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+Program.Sub.GsGCPart_CellValueChanged.End
+
+Program.Sub.GsGCChgCode_CellValueChanged.Start
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Data.DataTable.SaveToDB("ChrgCodeDT","Conx","GCG_4928_CHRGCODE","CHRGCODE",256,"CHRGCODE@!@CHRGCODE*!*CHRGAMT@!@CHRGAMT")
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+Program.Sub.GsGCChgCode_CellValueChanged.End
+
+Program.Sub.GsGCComp_CellValueChanged.Start
+f.Data.DataTable.acceptchanges("CompDescDT")
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Data.DataTable.SaveToDB("CompDescDT","Conx","GCG_4928_COMPDESC","COMP_SFX",256,"COMP_SFX@!@COMP_SFX*!*COMP_TYPE@!@COMP_TYPE*!*COMP_SIDE@!@COMP_SIDE*!*DESCRIPTION@!@DESCRIPTION*!*Router@!@Router*!*TI_ROUTER@!@TI_ROUTER*!*BLANK_ROUTER@!@BLANK_ROUTER*!*TI_BLANK_ROUTER@!@TI_BLANK_ROUTER")
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+Program.Sub.GsGCComp_CellValueChanged.End
+
+Program.Sub.cmdRoutBrow_Click.Start
+F.Intrinsic.Control.CallSub(RouterBrowser)
+
+'handle return
+F.Intrinsic.Control.If(V.Args.Router,=,"***CANCEL***")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.else
+	gui.fPartMaint.txtRouter.Text(V.Args.Router)
+f.Intrinsic.Control.EndIf
+Program.Sub.cmdRoutBrow_Click.End
+
+Program.Sub.cmdAlTiRoutBrow_Click.Start
+F.Intrinsic.Control.CallSub(RouterBrowser)
+
+'handle return
+F.Intrinsic.Control.If(V.Args.Router,=,"***CANCEL***")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.else
+	gui.fPartMaint.txtAllTiRouter.Text(V.Args.Router)
+f.Intrinsic.Control.EndIf
+Program.Sub.cmdAlTiRoutBrow_Click.End
+
+Program.Sub.cmdBlankRouterBrowser_Click.Start
+F.Intrinsic.Control.CallSub(RouterBrowser)
+
+'handle return
+F.Intrinsic.Control.If(V.Args.Router,=,"***CANCEL***")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.else
+	gui.fPartMaint.txtBlankRouter.Text(V.Args.Router)
+f.Intrinsic.Control.EndIf
+Program.Sub.cmdBlankRouterBrowser_Click.End
+
+Program.Sub.cmdAllTiBlankRouterBrowser_Click.Start
+F.Intrinsic.Control.CallSub(RouterBrowser)
+
+'handle return
+F.Intrinsic.Control.If(V.Args.Router,=,"***CANCEL***")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.else
+	gui.fPartMaint.txtAllTiBlankRouter.Text(V.Args.Router)
+f.Intrinsic.Control.EndIf
+Program.Sub.cmdAllTiBlankRouterBrowser_Click.End
+
+Program.Sub.RouterBrowser.Start
+v.Local.sSql.Declare
+v.local.sTitles.Declare
+v.Local.iWidths.Declare
+v.Local.sRet.Declare
+v.Local.sDisp.Declare
+
+'create browser
+v.Local.sSql.Set("select Router, Description_Router from V_ROUTER_HEADER where UCASE(SORT_2) like '%TEMP%'")
+F.Intrinsic.String.Split("Router*!*Description","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("200*!*600","*!*",V.Local.iWidths)
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.UI.Browser("Select Router","Conx",V.Local.sSql,V.Local.sTitles,V.Local.iWidths,V.Local.sRet)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox("Oops! Something went wrong. Please contact tech support.")
+f.Intrinsic.Control.Finally
+	f.ODBC.Connection!conx.Close
+f.Intrinsic.Control.EndTry
+
+'handle return
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	F.Intrinsic.Variable.AddRV("Router", V.Local.sRet)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.else
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.local.sRet)
+	F.Intrinsic.Variable.AddRV("Router", V.Local.sRet(0).Trim)
+f.Intrinsic.Control.EndIf
+Program.Sub.RouterBrowser.End
