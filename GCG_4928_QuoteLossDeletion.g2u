@@ -1,0 +1,193 @@
+Program.Sub.Preflight.Start
+Program.External.Include.Library("3500.lib")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'GCG_4928_QuoteLossDeletion.g2u
+'Trey S
+'04-22-2019
+'for TMJ Concepts
+'This script will delete all associated parts / routers that were created for a quote (by GCG_4928_QteAutoLineGen.g2u) when the quote is lost
+
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+V.Local.sQuote.Declare(String)
+
+'17343 - Quote Won Loss Post Save
+F.Intrinsic.Control.If(V.Caller.Hook, =, 17343)
+	'check if any lost lines
+	
+	F.Intrinsic.Control.If(V.Passed.LOSS-COUNT.Long, >, 0)
+		V.Local.sQuote.Set(V.Passed.QUOTE.Trim)
+		F.Intrinsic.String.LPad(V.Local.sQuote, "0", 7, V.Local.sQuote)
+		F.ODBC.Connection!Con.OpenCompanyConnection
+		F.Intrinsic.Control.CallSub(GetLostItems, "Quote", V.Local.sQuote)
+		F.Intrinsic.Control.If(V.DataTable.dtParts.Exists)
+			F.Intrinsic.Control.If(V.DataTable.dtParts.RowCount, >, 0)
+				F.Intrinsic.Control.CallSub(DeleteBOMs)
+				F.Intrinsic.Control.CallSub(DeleteRouters)
+				F.Intrinsic.Control.CallSub(DeleteParts)
+			F.Intrinsic.Control.EndIf
+			F.Data.DataTable.Close("dtParts")
+			F.ODBC.Connection!Con.Close
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Caller.ScriptFile,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.GetLostItems.Start
+'get list of items that were lost
+
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+V.Local.sQuote.Declare(String)
+V.Local.sSQL.Declare(String)
+
+V.Local.sQuote.Set(V.Args.Quote)
+'CHG is for Charge codes
+F.Intrinsic.String.Build("select RTRIM(QUOTE_NO) as QUOTE_NO, RTRIM(PART) as PART, RTRIM(LOCATION) as LOC, 0 as QTY_ONHAND from V_QUOTE_LINES where QUOTE_NO = '{0}' and QUOTE_WON = 'L' and PART not like 'CHG%'", V.Local.sQuote, V.Local.sSQL)
+
+F.Data.DataTable.CreateFromSQL("dtParts", "Con", V.Local.sSQL, True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Caller.ScriptFile,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.GetLostItems.End
+
+Program.Sub.DeleteBOMs.Start
+'delete BOMS that were lost on the quote
+
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+V.Local.sSQL.Declare(String)
+V.Local.sParts.Declare(String)
+V.Local.sFilter.Declare(String)
+V.Local.iCounter.Declare(Long)
+
+F.Data.DataView.Create("dtParts", "dvParts", 22)
+F.Data.DataView.ToString("dtParts", "dvParts", "PART", "*!*", "','", V.Local.sParts)
+F.Data.DataView.Close("dtParts", "dvParts")
+
+F.Intrinsic.String.Build("delete from BOM_MSTR where PARENT in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from BOM_NOTES where PARENT in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from BOM_XREF where PARENT in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+'doing this because BOM_ENG also has location
+V.Local.sSQL.Set("")
+F.Intrinsic.Control.For(V.Local.iCounter, 0, V.DataTable.dtParts.RowCount--, 1)
+	F.Intrinsic.String.Build("{0}delete from BOM_ENG where PART = '{1}' and LOCATION = '{2}';{3}", V.Local.sSQL, V.DataTable.dtParts(V.Local.iCounter).PART!FieldValTrim, V.DataTable.dtParts(V.Local.iCounter).LOC!FieldValTrim, V.Ambient.NewLine, V.Local.sSQL)
+F.Intrinsic.Control.Next(V.Local.iCounter)
+'F.Intrinsic.String.Build("delete from BOM_ENG where PART in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Caller.ScriptFile,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.DeleteBOMs.End
+
+Program.Sub.DeleteRouters.Start
+'delete routers that were lost on the quote
+
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+V.Local.sSQL.Declare(String)
+V.Local.sParts.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Data.DataView.Create("dtParts", "dvParts", 22)
+F.Data.DataView.ToString("dtParts", "dvParts", "PART", "*!*", "','", V.Local.sParts)
+F.Data.DataView.Close("dtParts", "dvParts")
+
+F.Intrinsic.String.Build("delete from ROUTER_HEADER where ROUTER in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from ROUTER_LINE where ROUTER in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from ROUTER_XREF where ROUTER in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from ROUTER_DESC where ROUTER in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from RTR_PRICE_1_4 where ROUTER in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from RTR_PRICE_5_8 where ROUTER in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from RTR_PRICE_9_10 where ROUTER in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from ROUTER_SUPP_HDR where RTR_NUM in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from ROUTER_SUPP_LINE where RTR_NUM in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("delete from RTR_SEQ_COMMENTS where RTR_NUMBER in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+'delete links
+'35 = ROUTER HEAD
+'37 = ROUTER LINE
+F.Intrinsic.String.Build("select LINK_ID_INT from V_LINK_DATA where (TYPE = '00035' or TYPE = '00037') and ID in ('{0}')", V.Local.sParts, V.Local.sSQL)
+F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+	F.Intrinsic.String.Replace(V.Local.sRet, "#$#", ",", V.Local.sRet)
+	F.Intrinsic.String.Build("delete from ATG_DOC_ASSOC where LINK_ID in ({0})", V.Local.sRet, V.Local.sSQL)
+	F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Build("delete from LINK_DATA where (TYPE = '00035' or TYPE = '00037') and ID in ('{0}')", V.Local.sParts, V.Local.sSQL)
+	F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Caller.ScriptFile,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.DeleteRouters.End
+
+Program.Sub.DeleteParts.Start
+'delete all parts from lost part lists
+
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+V.Local.iCounter.Declare(Long)
+V.Local.sParts.Declare(String)
+
+'parts can only be deleted with callwrapper if onhand is 0
+F.Data.DataTable.SaveToDB("dtParts", "Con", "INVENTORY_MSTR", "PART*!*LOC", "256", "PART@!@PART*!*LOC@!@LOCATION*!*QTY_ONHAND@!@QTY_ONHAND")
+
+F.Data.DataTable.Merge("dtParts", "3500", False, 2)
+F.Data.DataTable.SetValue("3500", -1, "Mode", "D", "Switch2", "N", "CompanyCode", V.Caller.CompanyCode)
+
+F.Intrinsic.Control.CallSub(3500Sync)
+F.Data.DataTable.AcceptChanges(3500)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Caller.ScriptFile,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.DeleteParts.End
